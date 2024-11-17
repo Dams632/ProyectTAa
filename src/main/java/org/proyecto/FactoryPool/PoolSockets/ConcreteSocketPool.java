@@ -4,11 +4,11 @@ import org.proyecto.Config.LeerConfig;
 import org.proyecto.FactoryPool.FactorySockets.ISocketFactory;
 import org.proyecto.FactoryPool.FactorySockets.SocketFactory;
 
+import java.net.Socket;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class ConcreteSocketPool extends AbstractSocketPool{
     ISocketFactory fabricaSocket;
-
 
     public ConcreteSocketPool(LeerConfig valor) {
         super(valor);

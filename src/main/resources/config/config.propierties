@@ -1,4 +1,4 @@
-server.port=1331
-conexiones.max=3
+server.port=13310
+conexiones.max=2
 conexiones.min=1
 time.timeOut=5

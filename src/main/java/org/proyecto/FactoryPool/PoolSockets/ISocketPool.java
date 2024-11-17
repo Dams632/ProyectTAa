@@ -1,8 +1,5 @@
 package org.proyecto.FactoryPool.PoolSockets;
 
-
-import org.proyecto.ServerProject.Socket.SocketP;
-
 import java.net.Socket;
 
 public interface ISocketPool {

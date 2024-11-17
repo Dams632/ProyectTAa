@@ -1,18 +1,18 @@
 package org.proyecto.ServerProject.Server;
 
-import org.proyecto.Config.LeerConfig;
-import org.proyecto.FactoryPool.PoolSockets.ConcreteSocketPool;
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.sql.Connection;
+
+import org.proyecto.Config.LeerConfig;
+import org.proyecto.FactoryPool.PoolSockets.ConcreteSocketPool;
 
 public class Server {
-    private  LeerConfig leerConfig = new LeerConfig("./src/main/resources/config/config.propierties");
+    private final LeerConfig leerConfig = new LeerConfig("./src/main/resources/config/config.propierties");
     private static Server server;
-    private ServerSocket serverSocket;
-    private  ConcreteSocketPool concreteSocketPool;
+    private final ServerSocket serverSocket;
+    private final ConcreteSocketPool concreteSocketPool;
+
 
 
     private Server(int port,ConcreteSocketPool concreteSocketPool) throws IOException {
@@ -27,19 +27,24 @@ public class Server {
     }
 
 
+
     public void start() throws IOException,InterruptedException {
         System.out.println("Servidor iniciado en el puerto ");
         concreteSocketPool.iniciarPool(leerConfig.getMinConexiones(), leerConfig.getMaxConexiones());
-        while(true){
-            try{
-                Socket cliente = serverSocket.accept();
-                System.out.println("Cloiente conectaado desde: "+ cliente.getRemoteSocketAddress());
+        Socket cliente;
+        while((cliente = serverSocket.accept())!=null){
 
+            try{                
+                Socket poolSocket = concreteSocketPool.getSocket();
+                System.out.println("Cliente:"+cliente.getRemoteSocketAddress());
+                new Thread(new ComunicacionCliente(poolSocket,concreteSocketPool)).start();
+                //concreteSocketPool.liberarSocket(cliente);
 
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
 
     }
+
 }

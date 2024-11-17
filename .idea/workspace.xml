@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="311d4bb7-3aa2-4887-a70e-3e8f280cb6d8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/Server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/Server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config/config.propierties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/config.propierties" afterDir="false" />
-    </list>
+    <list default="true" id="311d4bb7-3aa2-4887-a70e-3e8f280cb6d8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,8 +13,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -80,7 +77,7 @@
       <workItem from="1731606666149" duration="337000" />
       <workItem from="1731607011356" duration="169000" />
       <workItem from="1731607195809" duration="4418000" />
-      <workItem from="1731620328475" duration="17264000" />
+      <workItem from="1731620328475" duration="33090000" />
     </task>
     <task id="LOCAL-00001" summary="de todo">
       <option name="closed" value="true" />
