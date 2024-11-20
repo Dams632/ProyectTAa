@@ -18,7 +18,6 @@ public class Server {
     private Server(int port,ConcreteSocketPool concreteSocketPool) throws Exception {
         serverSocket= new ServerSocket(port);
         this.concreteSocketPool = concreteSocketPool;
-        concreteSocketPool.iniciarPool(leerConfig.getMaxConexiones());
     }
     public static Server getServer(int port,ConcreteSocketPool concreteSocketPool) throws Exception{
         if(server ==null){
@@ -26,11 +25,31 @@ public class Server {
         }
         return server;
     }
+    public void iniciarServer(){
+        new Thread(()-> {
+            try {
+
+                start();
+                serverSocket.setReuseAddress(true);
+            } catch (Exception e) {
+                //throw new RuntimeException(e);
+            }
+        }).start();
+    }
+    public void stop(){
+        try {
+            serverSocket.close();
+        }catch (IOException e){
+
+        }
+    }
 
 
 
-    public void start() throws IOException,InterruptedException {
+    private void start() throws IOException,Exception {
         System.out.println("Servidor iniciado en el puerto "+ leerConfig.getPort());
+        concreteSocketPool.iniciarPool(leerConfig.getMaxConexiones());
+
         while (true) {
             System.out.println("Esperando conexión de cliente...");
             System.out.println("Socket pool :" + concreteSocketPool);

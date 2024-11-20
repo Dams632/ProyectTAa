@@ -2,6 +2,7 @@ package org.proyecto.ServerProject;
 
 import org.proyecto.Config.LeerConfig;
 import org.proyecto.FactoryPool.PoolSockets.ConcreteSocketPool;
+import org.proyecto.ServerProject.Controllers.ServerController;
 import org.proyecto.ServerProject.GUI.ServerGUI;
 import org.proyecto.ServerProject.Server.Server;
 
@@ -14,12 +15,20 @@ public class MainServer {
 
             ConcreteSocketPool pool = ConcreteSocketPool.getConcretePool(config);
             Server server= Server.getServer(config.getPort(), pool);
-            server.start();
+//            ServerGUI serverGUI = new ServerGUI();
+//
+//            SwingUtilities.invokeLater(()-> serverGUI.setVisible(true));
+            //server.start();
             System.out.println("Hello worldaa!");
-//            SwingUtilities.invokeLater(() -> {
-//                ServerGUI serverGUI = new ServerGUI();
-//                serverGUI.showPreGUI();
-//            });
+            SwingUtilities.invokeLater(() -> {
+                try {
+                    ServerGUI serverGUI = new ServerGUI();
+                    new ServerController(serverGUI,server);
+                    serverGUI.setVisible(true);
+                } catch (Exception e) {
+
+                }
+            });
         }
 
 }
