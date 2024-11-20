@@ -1,16 +1,16 @@
 package org.proyecto.ClientProject;
 
 import org.proyecto.Config.LeerConfig;
-import org.proyecto.FactoryPool.PoolSockets.ConcreteSocketPool;
 
 public class MainCliente {
-        public static void main(String[] args) {
+        public static void main(String[] args) throws Exception {
             LeerConfig config = new LeerConfig("./src/main/resources/config/config.propierties");
-            ConcreteSocketPool concreteSocketPool = new ConcreteSocketPool(config);
-
-            Cliente cliente = new Cliente(concreteSocketPool);
-
-            cliente.conectar();
+            Cliente cliente = new Cliente("192.168.1.8", config.getPort());
+            try {
+                cliente.conectar();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             System.out.println("Hello worldaa!");
         }
 

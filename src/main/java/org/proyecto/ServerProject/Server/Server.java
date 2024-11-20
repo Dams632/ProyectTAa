@@ -15,11 +15,12 @@ public class Server {
 
 
 
-    private Server(int port,ConcreteSocketPool concreteSocketPool) throws IOException {
+    private Server(int port,ConcreteSocketPool concreteSocketPool) throws Exception {
         serverSocket= new ServerSocket(port);
         this.concreteSocketPool = concreteSocketPool;
+        concreteSocketPool.iniciarPool(leerConfig.getMaxConexiones());
     }
-    public static Server getServer(int port,ConcreteSocketPool concreteSocketPool) throws IOException{
+    public static Server getServer(int port,ConcreteSocketPool concreteSocketPool) throws Exception{
         if(server ==null){
             return new Server(port,concreteSocketPool);
         }
@@ -29,20 +30,16 @@ public class Server {
 
 
     public void start() throws IOException,InterruptedException {
-        System.out.println("Servidor iniciado en el puerto ");
-        concreteSocketPool.iniciarPool(leerConfig.getMinConexiones(), leerConfig.getMaxConexiones());
-        Socket cliente;
-        while((cliente = serverSocket.accept())!=null){
+        System.out.println("Servidor iniciado en el puerto "+ leerConfig.getPort());
+        while (true) {
+            System.out.println("Esperando conexión de cliente...");
+            System.out.println("Socket pool :" + concreteSocketPool);
 
-            try{                
-                Socket poolSocket = concreteSocketPool.getSocket();
-                System.out.println("Cliente:"+cliente.getRemoteSocketAddress());
-                new Thread(new ComunicacionCliente(poolSocket,concreteSocketPool)).start();
-                //concreteSocketPool.liberarSocket(cliente);
+            Socket cliente = serverSocket.accept(); // Acepta una nueva conexión
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+                // Inicia el manejador para el cliente
+                new Thread(new ComunicacionCliente(cliente, concreteSocketPool)).start();
+
         }
 
     }

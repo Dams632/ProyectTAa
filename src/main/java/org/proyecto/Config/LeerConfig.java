@@ -35,4 +35,7 @@ public class LeerConfig {
     public int getTimeOut(){
         return Integer.parseInt(properties.getProperty("time.timeOut"));
     }
+    public String getIp(){
+        return properties.getProperty("server.ip");
+    }
 }
