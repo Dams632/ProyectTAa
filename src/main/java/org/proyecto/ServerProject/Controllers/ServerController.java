@@ -2,15 +2,10 @@ package org.proyecto.ServerProject.Controllers;
 import org.proyecto.Config.LeerConfig;
 import org.proyecto.FactoryPool.PoolSockets.ConcreteSocketPool;
 import org.proyecto.ServerProject.GUI.ServerGUI;
-import org.proyecto.ServerProject.Server.ComunicacionCliente;
 import org.proyecto.ServerProject.Server.Server;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.net.Socket;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ServerController  {
     private ServerGUI serverGUI;
@@ -19,7 +14,7 @@ public class ServerController  {
     private Server server;
 
 
-    public ServerController(ServerGUI serverGUI,Server server) throws Exception {
+    public ServerController(ServerGUI serverGUI,Server server) {
         this.concreteSocketPool=ConcreteSocketPool.getConcretePool(leerConfig);
         this.serverGUI=serverGUI;
         this.server=server;
@@ -36,6 +31,12 @@ public class ServerController  {
                 stopServer();
             }catch (Exception es){
 
+            }
+        });
+        serverGUI.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
             }
         });
     }

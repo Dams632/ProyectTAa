@@ -1,34 +1,54 @@
 package org.proyecto.ServerProject.PantallaCliente;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.*;
 import java.net.Socket;
 
-public class PantallaCliente implements Runnable{
-    private final Socket socketCliente;
-    private final JLabel screenLabel;
+public class PantallaCliente  extends JFrame implements Runnable{
+    private  Socket socketCliente;
+    private EnviarComandosCliente enviarComandosCliente;
 
-    public PantallaCliente(Socket socketCliente, JLabel screenLabel) {
-        this.socketCliente = socketCliente;
-        this.screenLabel = screenLabel;
+    public PantallaCliente(Socket socket) {
+        socketCliente=socket;
     }
 
     @Override
     public void run() {
-        try(InputStream in = socketCliente.getInputStream()){
-            while(true){
-                BufferedImage imagen = ImageIO.read(in);
-                if(imagen!=null){
-                    ImageIcon icon = new ImageIcon(imagen);
-                    screenLabel.setIcon(icon);
-                }
+        JFrame frame = new JFrame("Pantalla del Cliente");
+        JLabel label = new JLabel();
+        frame.add(label);
+        frame.setSize(800, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+
+        addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                enviarComandosCliente.enviarMoverMouse(e.getX(),e.getY());
             }
-        }catch (IOException e){
+        });
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                enviarComandosCliente.enviarClicIzquierdoMouse(e.getX(),e.getY());
+            }
+        });
+
+        try (ObjectInputStream ois = new ObjectInputStream(socketCliente.getInputStream())) {
+            while (true) {
+                // Recibir la imagen encapsulada en ImageIcon
+                ImageIcon imageIcon = (ImageIcon) ois.readObject();
+
+                // Mostrar la imagen en el JLabel
+                label.setIcon(imageIcon);
+
+                // Actualizar la ventana
+                frame.repaint();
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }

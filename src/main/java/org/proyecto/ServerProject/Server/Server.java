@@ -6,12 +6,15 @@ import java.net.Socket;
 
 import org.proyecto.Config.LeerConfig;
 import org.proyecto.FactoryPool.PoolSockets.ConcreteSocketPool;
+import org.proyecto.ServerProject.PantallaCliente.EnviarComandosCliente;
+import org.proyecto.ServerProject.PantallaCliente.PantallaCliente;
 
 public class Server {
     private final LeerConfig leerConfig = new LeerConfig("./src/main/resources/config/config.propierties");
     private static Server server;
     private final ServerSocket serverSocket;
     private final ConcreteSocketPool concreteSocketPool;
+    private Thread serverThread;
 
 
 
@@ -26,27 +29,27 @@ public class Server {
         return server;
     }
     public void iniciarServer(){
-        new Thread(()-> {
+         serverThread = new Thread(()-> {
             try {
-
                 start();
                 serverSocket.setReuseAddress(true);
             } catch (Exception e) {
-                //throw new RuntimeException(e);
             }
-        }).start();
+        });
+        serverThread.start();
     }
     public void stop(){
         try {
             serverSocket.close();
-        }catch (IOException e){
+            serverThread.join();
+        }catch (Exception e){
 
         }
     }
 
 
 
-    private void start() throws IOException,Exception {
+    private void start() throws Exception {
         System.out.println("Servidor iniciado en el puerto "+ leerConfig.getPort());
         concreteSocketPool.iniciarPool(leerConfig.getMaxConexiones());
 
@@ -56,9 +59,10 @@ public class Server {
 
             Socket cliente = serverSocket.accept(); // Acepta una nueva conexión
 
-                // Inicia el manejador para el cliente
-                new Thread(new ComunicacionCliente(cliente, concreteSocketPool)).start();
-
+                 //Inicia el manejador para el cliente
+//                new Thread(new ComunicacionCliente(cliente, concreteSocketPool)).start();
+            Thread pantallaCliente = new Thread(new PantallaCliente(cliente));
+            pantallaCliente.start();
         }
 
     }

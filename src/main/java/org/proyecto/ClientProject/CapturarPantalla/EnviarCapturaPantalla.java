@@ -1,32 +1,36 @@
 package org.proyecto.ClientProject.CapturarPantalla;
 
-import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
 
-public class EnviarCapturaPantalla {
+public class EnviarCapturaPantalla implements Runnable{
     private final Socket socket;
-    private  final Robot robot;
+    private Robot robot;
+    private Rectangle rectangulo;
 
-    public EnviarCapturaPantalla(Socket socket) throws AWTException{
+    public EnviarCapturaPantalla(Socket socket) throws Exception{
         this.socket = socket;
-        this.robot = new Robot();
+        robot = new Robot();
+        rectangulo = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
     }
-    public void enviarScreenshots(){
-        new Thread(()->{
-            try(OutputStream out= socket.getOutputStream()){
-                while(true){
-                    BufferedImage screenshot  =robot.createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-                    ImageIO.write(screenshot,"jpg",out);
-                    out.flush();
-                    Thread.sleep(500);
-                }
-            }catch (IOException | InterruptedException e){
-                e.printStackTrace();
-            }
-        }).start();
+
+    @Override
+    public void run() {
+        try(ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream())){
+           while(true){
+               BufferedImage imagen = robot.createScreenCapture(rectangulo);
+               ImageIcon imageIcon = new ImageIcon(imagen);
+               out.writeObject(imageIcon);
+               out.flush();
+               Thread.sleep(100);
+           }
+
+        }catch (IOException | InterruptedException e ){
+            e.printStackTrace();
+        }
+
     }
 }

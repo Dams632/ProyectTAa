@@ -5,12 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="311d4bb7-3aa2-4887-a70e-3e8f280cb6d8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/ClicDerechoMouse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/ClicIzquierdoMouse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/ICommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/MoverMouse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/PresionarTecla.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/ScrollMouse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/Controllers/ControladorRemoto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/MainCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/MainCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/CapturarPantalla/EnviarCapturaPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/CapturarPantalla/EnviarCapturaPantalla.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/CapturarPantalla/RecibirOrdenesRemotas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/CapturarPantalla/RecibirOrdenesRemotas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/Cliente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/Controllers/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/Controllers/ServerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/GUI/ServerGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/GUI/ServerGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/MainServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/MainServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/PantallaCliente/EnviarComandosCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/PantallaCliente/EnviarComandosCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/PantallaCliente/PantallaCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/PantallaCliente/PantallaCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/Server/ComunicacionCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/Server/ComunicacionCliente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/Server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/Server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/config.propierties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/config.propierties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +121,13 @@
       <workItem from="1732078228810" duration="75000" />
       <workItem from="1732078321028" duration="374000" />
       <workItem from="1732079450584" duration="22000" />
-      <workItem from="1732079485576" duration="6661000" />
+      <workItem from="1732079485576" duration="6986000" />
+      <workItem from="1732114008693" duration="1321000" />
+      <workItem from="1732256468181" duration="4682000" />
+      <workItem from="1732499900900" duration="10056000" />
+      <workItem from="1732517434315" duration="2828000" />
+      <workItem from="1732520733487" duration="5739000" />
+      <workItem from="1732526593404" duration="2616000" />
     </task>
     <task id="LOCAL-00001" summary="de todo">
       <option name="closed" value="true" />
@@ -135,9 +152,19 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="e86f8941-7f2c-4038-9254-f6689da3a472" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="e86f8941-7f2c-4038-9254-f6689da3a472">
           <value>
             <State />
           </value>
