@@ -36,7 +36,8 @@ public class Cliente {
         try{
             Thread enviarCaptura = new Thread(new EnviarCapturaPantalla(socket));
             enviarCaptura.start();
-            new Thread(new RecibirOrdenesRemotas(socket)).start();
+            Thread recibirComandos = new Thread(new RecibirOrdenesRemotas(socket));
+            recibirComandos.start();
         }catch (Exception e){
             e.printStackTrace();
         }

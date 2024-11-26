@@ -15,10 +15,6 @@ public class MainServer {
 
             ConcreteSocketPool pool = ConcreteSocketPool.getConcretePool(config);
             Server server= Server.getServer(config.getPort(), pool);
-//            ServerGUI serverGUI = new ServerGUI();
-//
-//            SwingUtilities.invokeLater(()-> serverGUI.setVisible(true));
-            //server.start();
             System.out.println("Hello worldaa!");
             SwingUtilities.invokeLater(() -> {
                 try {

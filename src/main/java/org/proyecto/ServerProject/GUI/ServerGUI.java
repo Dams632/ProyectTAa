@@ -2,6 +2,7 @@ package org.proyecto.ServerProject.GUI;
 import org.proyecto.ServerProject.Controllers.ServerController;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 
@@ -10,12 +11,14 @@ public class ServerGUI extends JFrame {
     private JButton stopServer;
     private JButton transferFile;
     private JPanel clientPanel;
+    private Map<String,JPanel> clientViews;
 
     public ServerGUI(){
         setTitle("SERVIDOR REMOTO");
-        setSize(500,400);
+        setSize(800,600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+        //Panel superior de botones
         startServer = new JButton("Iniciar Servidor");
         stopServer = new JButton("Detener Servidor");
         transferFile = new JButton("TRANSFERIR ARCHIVOS");
@@ -27,9 +30,12 @@ public class ServerGUI extends JFrame {
         topPanel.add(stopServer);
 
         clientPanel = new JPanel();
-        clientPanel.setLayout(new GridLayout(5,5));
+        clientPanel.setLayout(new GridLayout(0,3,10,10));
+        clientPanel.setBorder(BorderFactory.createLineBorder(Color.BLUE,2));
+
+        JScrollPane scrollPane = new JScrollPane(clientPanel);
         add(topPanel,BorderLayout.NORTH);
-        add(clientPanel,BorderLayout.CENTER);
+        add(scrollPane,BorderLayout.CENTER);
     }
 
     public JPanel getClientPanel() {

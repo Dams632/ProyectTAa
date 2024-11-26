@@ -33,12 +33,6 @@ public class ServerController  {
 
             }
         });
-        serverGUI.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-            }
-        });
     }
     private void startServer() throws Exception{
         System.out.println("HOLAAAAAA");

@@ -1,5 +1,7 @@
 package org.proyecto.Command;
 
-public interface ICommand {
+import java.io.Serializable;
+
+public interface ICommand extends Serializable {
     void ejecutar();
 }

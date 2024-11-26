@@ -3,10 +3,11 @@ package org.proyecto.ServerProject.Server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.proyecto.Config.LeerConfig;
 import org.proyecto.FactoryPool.PoolSockets.ConcreteSocketPool;
-import org.proyecto.ServerProject.PantallaCliente.EnviarComandosCliente;
 import org.proyecto.ServerProject.PantallaCliente.PantallaCliente;
 
 public class Server {
@@ -50,6 +51,7 @@ public class Server {
 
 
     private void start() throws Exception {
+        ExecutorService executor = Executors.newFixedThreadPool(leerConfig.getMaxConexiones());
         System.out.println("Servidor iniciado en el puerto "+ leerConfig.getPort());
         concreteSocketPool.iniciarPool(leerConfig.getMaxConexiones());
 
@@ -58,11 +60,14 @@ public class Server {
             System.out.println("Socket pool :" + concreteSocketPool);
 
             Socket cliente = serverSocket.accept(); // Acepta una nueva conexión
+            String clientID = cliente.getInetAddress().getHostAddress();
 
                  //Inicia el manejador para el cliente
 //                new Thread(new ComunicacionCliente(cliente, concreteSocketPool)).start();
-            Thread pantallaCliente = new Thread(new PantallaCliente(cliente));
-            pantallaCliente.start();
+            PantallaCliente pantallaCliente = new PantallaCliente(cliente);
+            executor.execute(pantallaCliente);
+//            Thread pantallaCliente = new Thread(new PantallaCliente(cliente));
+//            pantallaCliente.start();
         }
 
     }

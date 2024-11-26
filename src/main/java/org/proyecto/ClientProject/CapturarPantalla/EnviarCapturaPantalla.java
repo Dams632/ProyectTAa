@@ -22,6 +22,8 @@ public class EnviarCapturaPantalla implements Runnable{
         try(ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream())){
            while(true){
                BufferedImage imagen = robot.createScreenCapture(rectangulo);
+               out.writeUTF("SCREEN");
+               out.flush();
                ImageIcon imageIcon = new ImageIcon(imagen);
                out.writeObject(imageIcon);
                out.flush();

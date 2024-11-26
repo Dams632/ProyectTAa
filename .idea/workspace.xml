@@ -5,23 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="311d4bb7-3aa2-4887-a70e-3e8f280cb6d8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/ClicDerechoMouse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/ClicIzquierdoMouse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/ICommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/MoverMouse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/PresionarTecla.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/ScrollMouse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/Controllers/ControladorRemoto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/Observer/ClientGridPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/Observer/ClientThumbnail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/Observer/IClientObserver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/CapturarPantalla/EnviarCapturaPantalla.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/CapturarPantalla/EnviarCapturaPantalla.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/CapturarPantalla/RecibirOrdenesRemotas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/CapturarPantalla/RecibirOrdenesRemotas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/ClicIzquierdoMouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/ClicIzquierdoMouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/ICommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/ICommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/Controllers/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/Controllers/ServerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/GUI/ServerGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/GUI/ServerGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/MainServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/MainServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/PantallaCliente/EnviarComandosCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/PantallaCliente/EnviarComandosCliente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/PantallaCliente/PantallaCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/PantallaCliente/PantallaCliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/Server/ComunicacionCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/Server/ComunicacionCliente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/Server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/Server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config/config.propierties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/config.propierties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +125,11 @@
       <workItem from="1732499900900" duration="10056000" />
       <workItem from="1732517434315" duration="2828000" />
       <workItem from="1732520733487" duration="5739000" />
-      <workItem from="1732526593404" duration="2616000" />
+      <workItem from="1732526593404" duration="3704000" />
+      <workItem from="1732530552251" duration="10091000" />
+      <workItem from="1732602395006" duration="380000" />
+      <workItem from="1732603217302" duration="2799000" />
+      <workItem from="1732606981529" duration="1913000" />
     </task>
     <task id="LOCAL-00001" summary="de todo">
       <option name="closed" value="true" />
