@@ -34,40 +34,11 @@ public class Cliente {
 
     private void iniciarComunicacion() {
         try{
-            Thread enviarCaptura = new Thread(new EnviarCapturaPantalla(socket));
-            enviarCaptura.start();
-            Thread recibirComandos = new Thread(new RecibirOrdenesRemotas(socket));
-            recibirComandos.start();
+            EnviarCapturaPantalla enviarCapturaPantalla = new EnviarCapturaPantalla(socket);
+            RecibirOrdenesRemotas recibirOrdenesRemotas = new RecibirOrdenesRemotas(socket);
         }catch (Exception e){
             e.printStackTrace();
         }
-//        Scanner scanner = new Scanner(System.in);
-//
-//        try (
-//                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-//                PrintWriter out = new PrintWriter(socket.getOutputStream(), true)
-//        ) {
-//            System.out.println("Conexión establecida con el servidor. Puedes empezar a enviar comandos.");
-//
-//            while (true) {
-//                System.out.print("Comando para el servidor: ");
-//                String comando = scanner.nextLine();
-//                out.println(comando); // Enviar comando al servidor
-//
-//                // Leer la respuesta del servidor
-//                String response = in.readLine();
-//                if (response == null) {
-//                    System.out.println("Servidor desconectado.");
-//                    break;
-//                }
-//                System.out.println("Respuesta del servidor: " + response);
-//            }
-//        } catch (IOException e) {
-//            System.err.println("Error durante la comunicación con el servidor: " + e.getMessage());
-//        } finally {
-//            desconectar(); // Liberar el socket en caso de error o desconexión
-//        }
-
     }
     public void desconectar () {
         //aplicar logica

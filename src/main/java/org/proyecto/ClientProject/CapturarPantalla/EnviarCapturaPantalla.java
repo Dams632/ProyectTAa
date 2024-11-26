@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.Socket;
 
-public class EnviarCapturaPantalla implements Runnable{
+public class EnviarCapturaPantalla extends Thread{
     private final Socket socket;
     private Robot robot;
     private Rectangle rectangulo;
@@ -15,6 +15,7 @@ public class EnviarCapturaPantalla implements Runnable{
         this.socket = socket;
         robot = new Robot();
         rectangulo = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+        start();
     }
 
     @Override

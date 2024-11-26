@@ -4,6 +4,7 @@ import org.proyecto.Command.ClicIzquierdoMouse;
 import org.proyecto.Command.MoverMouse;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.*;
@@ -11,53 +12,23 @@ import java.net.Socket;
 
 public class PantallaCliente  extends JFrame implements Runnable{
     private  Socket socketCliente;
-    private EnviarComandosCliente enviarComandosCliente;
 
     public PantallaCliente(Socket socket) {
         socketCliente=socket;
-        this.enviarComandosCliente = new EnviarComandosCliente(socket);
     }
 
     @Override
     public void run() {
+        Rectangle rectangle = null;
         JFrame frame = new JFrame("Pantalla del Cliente");
         JLabel label = new JLabel();
         frame.add(label);
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+        EnviarComandosCliente enviarComandosCliente = new EnviarComandosCliente(socketCliente,label);
 
-        frame.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                enviarComandosCliente.enviarComando(new MoverMouse(e.getX(),e.getY()));
-            }
-        });
-        label.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                System.out.println("CLIC CLIC");
-                if (e.getButton() == MouseEvent.BUTTON1) {
-                    enviarComandosCliente.enviarComando(new ClicIzquierdoMouse());
-                }
-            }
-        });
 
-        label.addMouseMotionListener(new MouseAdapter() {
-            @Override
-            public void mouseMoved(MouseEvent e) {
-                enviarComandosCliente.enviarComando(new MoverMouse(e.getX(),e.getY()));
-
-            }
-        });
-        addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getButton() == MouseEvent.BUTTON1) {
-                enviarComandosCliente.enviarClicIzquierdoMouse(e.getX(),e.getY());
-                }
-            }
-        });
 
 
         try (ObjectInputStream ois = new ObjectInputStream(socketCliente.getInputStream())) {
@@ -67,6 +38,8 @@ public class PantallaCliente  extends JFrame implements Runnable{
                 if ("SCREEN".equals(header)) {
                     // Recibir la imagen encapsulada en ImageIcon
                     ImageIcon imageIcon = (ImageIcon) ois.readObject();
+                    Image image = imageIcon.getImage();
+                    image= image.getScaledInstance(label.getWidth(),label.getHeight(),Image.SCALE_SMOOTH);
 
                     // Mostrar la imagen en el JLabel
                     label.setIcon(imageIcon);

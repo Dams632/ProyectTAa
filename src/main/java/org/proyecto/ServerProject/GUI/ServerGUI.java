@@ -4,6 +4,7 @@ import org.proyecto.ServerProject.Controllers.ServerController;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.Map;
 
 
 public class ServerGUI extends JFrame {

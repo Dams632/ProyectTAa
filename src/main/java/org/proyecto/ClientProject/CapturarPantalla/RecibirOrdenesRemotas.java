@@ -3,39 +3,53 @@ package org.proyecto.ClientProject.CapturarPantalla;
 import org.proyecto.Command.ICommand;
 
 import java.awt.*;
-import java.awt.event.InputEvent;
-import java.io.DataInputStream;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.net.Socket;
+import java.util.Scanner;
 
-public class RecibirOrdenesRemotas implements Runnable {
+public class RecibirOrdenesRemotas extends Thread {
     private final Socket socket;
+    ICommand commando;
+    private Robot robot;
 
     public RecibirOrdenesRemotas(Socket socket) {
         this.socket = socket;
+        try {
+            this.robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+        start();
     }
 
     @Override
     public void run() {
-        try (ObjectInputStream in = new ObjectInputStream(socket.getInputStream())) {
-            while (true) {
-                String headr = in.readUTF();
-                try {
-                    if("COMMAND".equals(headr)) {
-                        ICommand comando = (ICommand) in.readObject();
-                        comando.ejecutar();
-                    }
-                } catch (EOFException e) {
-                    System.out.println("Se alcanzó el final del flujo de datos.");
-                    break; // Si es normal que se cierre la conexión, salimos del bucle
-                } catch (ClassNotFoundException | IOException e) {
-                    e.printStackTrace();
+        Scanner scanner=null;
+        try{
+            scanner=new Scanner(socket.getInputStream());
+            while(true){
+                System.out.println("Waiting for command");
+                int command = scanner.nextInt();
+                System.out.println("New command: " + command);
+                switch (command){
+                    case -1:
+                        robot.mousePress(scanner.nextInt());
+                        break;
+                    case -2:
+                        robot.mouseRelease(scanner.nextInt());
+                        break;
+                    case -3:
+                        robot.keyPress(scanner.nextInt());
+                        break;
+                    case -4:
+                        robot.keyRelease(scanner.nextInt());
+                        break;
+                    case -5:
+                        robot.mouseMove(scanner.nextInt(), scanner.nextInt());
+                        break;
                 }
             }
-        }catch (Exception e){
-
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

@@ -12,40 +12,105 @@ import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class EnviarComandosCliente extends Thread {
-    private final Socket clientSocket;
-    //private ObjectOutputStream out;
+public class EnviarComandosCliente implements KeyListener,MouseMotionListener,MouseListener{
+    private Socket clientSocket;
+    private JLabel jLabel;
+    //private Rectangle rectangle;
+    private PrintWriter writer;
 
-    public EnviarComandosCliente(Socket clientSocket) {
+    public EnviarComandosCliente(Socket clientSocket, JLabel jLabel) {
         this.clientSocket = clientSocket;
-//        try{
-//        out=new ObjectOutputStream(clientSocket.getOutputStream());
-//        }catch (IOException e){
-//            e.printStackTrace();
-//        }
-    }
+        this.jLabel = jLabel;
+       // this.rectangle = rectangle;
 
-    public synchronized void enviarMoverMouse(int coordenadaX, int coordenadaY){
-        enviarComando(new MoverMouse(coordenadaX,coordenadaY));
-    }
-    public synchronized void enviarClicIzquierdoMouse(int coordenadaX, int coordenadaY){
-        enviarComando((new ClicIzquierdoMouse()));
-    }
+        jLabel.addMouseListener(this);
+        jLabel.addMouseMotionListener(this);
+        jLabel.addKeyListener(this);
 
-    @Override
-    public void run() {
-
-
-    }
-
-    public void enviarComando(ICommand command){
-        try (ObjectOutputStream out = new ObjectOutputStream(clientSocket.getOutputStream())) {
-            out.writeUTF("COMMAND");
-            out.flush();
-            out.writeObject(command); // Enviar el comando
-            out.flush(); // Asegúrate de que los datos se envíen correctamente
+        try{
+            writer = new PrintWriter(clientSocket.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        System.out.println("Mouse Pressed");
+        writer.println(-1);
+        int button = e.getButton();
+        //first we assume left button is clicked
+        int xButton = 16;
+        if (button == 3) // if right button is clciked
+        {
+            xButton = 4;
+        }
+
+        // xbutton is value used to tell robot class which mouse button is pressed
+        writer.println(xButton);
+        writer.flush();
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        System.out.println("Mouse Released");
+        writer.println(-2);
+        int button = e.getButton();
+        System.out.println(button);
+        int xButton = 16;
+        if (button == 3) {
+            xButton = 4;
+        }
+        writer.println(xButton);
+        writer.flush();
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        double xScale = jLabel.getWidth()/jLabel.getWidth();
+        System.out.println("xScale: " + xScale);
+        double yScale = jLabel.getHeight()/jLabel.getHeight();
+        System.out.println("yScale: " + yScale);
+        System.out.println("Mouse Moved");
+        writer.println(-5);
+        writer.println((int)(e.getX() * xScale));
+        writer.println((int)(e.getY() * yScale));
+        writer.flush();
     }
 }
