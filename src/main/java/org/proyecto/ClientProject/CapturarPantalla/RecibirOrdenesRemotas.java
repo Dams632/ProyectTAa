@@ -27,9 +27,7 @@ public class RecibirOrdenesRemotas extends Thread {
         try{
             scanner=new Scanner(socket.getInputStream());
             while(true){
-                System.out.println("Waiting for command");
                 int command = scanner.nextInt();
-                System.out.println("New command: " + command);
                 switch (command){
                     case -1:
                         robot.mousePress(scanner.nextInt());

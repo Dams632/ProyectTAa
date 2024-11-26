@@ -56,7 +56,6 @@ public class EnviarComandosCliente implements KeyListener,MouseMotionListener,Mo
 
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println("Mouse Pressed");
         writer.println(-1);
         int button = e.getButton();
         //first we assume left button is clicked
@@ -74,7 +73,6 @@ public class EnviarComandosCliente implements KeyListener,MouseMotionListener,Mo
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        System.out.println("Mouse Released");
         writer.println(-2);
         int button = e.getButton();
         System.out.println(button);
@@ -103,14 +101,11 @@ public class EnviarComandosCliente implements KeyListener,MouseMotionListener,Mo
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        double xScale = jLabel.getWidth()/jLabel.getWidth();
-        System.out.println("xScale: " + xScale);
-        double yScale = jLabel.getHeight()/jLabel.getHeight();
-        System.out.println("yScale: " + yScale);
-        System.out.println("Mouse Moved");
+//        double xScale = jLabel.getWidth()/jLabel.getWidth();
+//        double yScale = jLabel.getHeight()/jLabel.getHeight();
         writer.println(-5);
-        writer.println((int)(e.getX() * xScale));
-        writer.println((int)(e.getY() * yScale));
+        writer.println((int)(e.getX() ));
+        writer.println((int)(e.getY()));
         writer.flush();
     }
 }
