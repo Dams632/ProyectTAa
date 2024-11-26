@@ -3,15 +3,13 @@ import org.proyecto.ServerProject.Controllers.ServerController;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class ServerGUI extends JFrame {
     private JButton startServer;
     private JButton stopServer;
     private JButton transferFile;
     private JPanel clientPanel;
-
 
     public ServerGUI(){
         setTitle("SERVIDOR REMOTO");

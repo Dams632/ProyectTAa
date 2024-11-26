@@ -55,7 +55,5 @@ public class ServerController  {
         //server=null;
         serverGUI.getStopServer().setEnabled(false);
         serverGUI.getStartServer().setEnabled(true);
-        System.out.println("SERVER INICIADO DESDE LA YGUIS");
-
     }
 }
