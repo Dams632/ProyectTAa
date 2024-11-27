@@ -1,27 +1,19 @@
 package org.proyecto.ServerProject.PantallaCliente;
 
-import org.proyecto.Command.ClicIzquierdoMouse;
-import org.proyecto.Command.ICommand;
-import org.proyecto.Command.MoverMouse;
-
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
 public class EnviarComandosCliente implements KeyListener,MouseMotionListener,MouseListener{
     private Socket clientSocket;
     private JLabel jLabel;
-    //private Rectangle rectangle;
     private PrintWriter writer;
 
     public EnviarComandosCliente(Socket clientSocket, JLabel jLabel) {
         this.clientSocket = clientSocket;
         this.jLabel = jLabel;
-       // this.rectangle = rectangle;
 
         jLabel.addMouseListener(this);
         jLabel.addMouseMotionListener(this);
@@ -96,13 +88,15 @@ public class EnviarComandosCliente implements KeyListener,MouseMotionListener,Mo
 
     @Override
     public void mouseDragged(MouseEvent e) {
+        writer.println(-6);
+        writer.println((int)(e.getX())); // Coordenada X del mouse
+        writer.println((int)(e.getY())); // Coordenada Y del mouse
+        writer.flush();
 
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-//        double xScale = jLabel.getWidth()/jLabel.getWidth();
-//        double yScale = jLabel.getHeight()/jLabel.getHeight();
         writer.println(-5);
         writer.println((int)(e.getX() ));
         writer.println((int)(e.getY()));

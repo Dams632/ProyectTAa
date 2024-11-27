@@ -5,7 +5,6 @@ import org.proyecto.FactoryPool.FactorySockets.ISocketFactory;
 import org.proyecto.FactoryPool.FactorySockets.SocketFactory;
 
 import java.io.IOException;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.concurrent.LinkedBlockingQueue;
 

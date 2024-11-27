@@ -4,7 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="311d4bb7-3aa2-4887-a70e-3e8f280cb6d8" name="Changes" comment="" />
+    <list default="true" id="311d4bb7-3aa2-4887-a70e-3e8f280cb6d8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/CapturarPantalla/RecibirOrdenesRemotas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/CapturarPantalla/RecibirOrdenesRemotas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/ClicDerechoMouse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/ClicIzquierdoMouse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/ICommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/MoverMouse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/PresionarTecla.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/Command/ScrollMouse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/Config/LeerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/Config/LeerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/FactoryPool/FactorySockets/SocketFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/FactoryPool/FactorySockets/SocketFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/FactoryPool/PoolSockets/AbstractSocketPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/FactoryPool/PoolSockets/AbstractSocketPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/FactoryPool/PoolSockets/ConcreteSocketPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/FactoryPool/PoolSockets/ConcreteSocketPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/PantallaCliente/EnviarComandosCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/PantallaCliente/EnviarComandosCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/PantallaCliente/PantallaCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/PantallaCliente/PantallaCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/Server/ComunicacionCliente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/Server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/Server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/config.propierties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/config.propierties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -116,6 +135,7 @@
       <workItem from="1732606981529" duration="1913000" />
       <workItem from="1732652964160" duration="1663000" />
       <workItem from="1732654959712" duration="298000" />
+      <workItem from="1732673569650" duration="668000" />
     </task>
     <task id="LOCAL-00001" summary="de todo">
       <option name="closed" value="true" />

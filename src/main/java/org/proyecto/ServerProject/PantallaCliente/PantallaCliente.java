@@ -26,6 +26,7 @@ public class PantallaCliente extends JFrame implements Runnable {
     }
 
     public void run(JLabel label) {
+        EnviarComandosCliente enviarComandosCliente = new EnviarComandosCliente(socketCliente,label);
         try (ObjectInputStream ois = new ObjectInputStream(socketCliente.getInputStream())) {
             while (true) {
                 String header = ois.readUTF();

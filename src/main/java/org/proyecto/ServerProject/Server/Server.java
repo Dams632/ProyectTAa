@@ -68,9 +68,6 @@ public class Server {
                 clientConnectedListener.onClientConnected(clientID, cliente);
             }
 
-            // Remove automatic window opening
-            // PantallaCliente pantallaCliente = new PantallaCliente(cliente);
-            // executor.execute(pantallaCliente);
         }
 
     }

@@ -1,19 +1,11 @@
 package org.proyecto.ClientProject;
 
-import java.awt.*;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.net.SocketAddress;
-import java.util.Scanner;
 
 import org.proyecto.ClientProject.CapturarPantalla.EnviarCapturaPantalla;
 import org.proyecto.ClientProject.CapturarPantalla.RecibirOrdenesRemotas;
 import org.proyecto.Config.LeerConfig;
-import org.proyecto.FactoryPool.PoolSockets.ConcreteSocketPool;
 
 public class Cliente {
     private String ip;

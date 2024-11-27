@@ -1,14 +1,10 @@
 package org.proyecto.ClientProject.CapturarPantalla;
-
-import org.proyecto.Command.ICommand;
-
 import java.awt.*;
 import java.net.Socket;
 import java.util.Scanner;
 
 public class RecibirOrdenesRemotas extends Thread {
     private final Socket socket;
-    ICommand commando;
     private Robot robot;
 
     public RecibirOrdenesRemotas(Socket socket) {
@@ -43,6 +39,10 @@ public class RecibirOrdenesRemotas extends Thread {
                         break;
                     case -5:
                         robot.mouseMove(scanner.nextInt(), scanner.nextInt());
+                        break;
+                    case -6:
+                        robot.mousePress(scanner.nextInt());
+                        robot.mouseMove(scanner.nextInt(),scanner.nextInt());
                         break;
                 }
             }
