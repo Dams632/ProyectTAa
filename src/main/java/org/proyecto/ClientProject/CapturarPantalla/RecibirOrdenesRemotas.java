@@ -49,6 +49,9 @@ public class RecibirOrdenesRemotas extends Thread {
                     case -8:
                         robot.keyRelease(scanner.nextInt());
                         break;
+                    case -9:
+                        robot.keyPress(scanner.nextInt());
+                        break;
                 }
             }
         } catch (Exception e) {

@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="311d4bb7-3aa2-4887-a70e-3e8f280cb6d8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/CapturarPantalla/RecibirOrdenesRemotas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ClientProject/CapturarPantalla/RecibirOrdenesRemotas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/grabaciones/127.0.0.1.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/grabaciones/127.0.0.1.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/PantallaCliente/EnviarComandosCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/proyecto/ServerProject/PantallaCliente/EnviarComandosCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/grabaciones/192.168.1.2.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/grabaciones/192.168.1.2.mp4" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +125,7 @@
       <workItem from="1732684841967" duration="907000" />
       <workItem from="1732685769505" duration="2575000" />
       <workItem from="1732708217693" duration="2722000" />
-      <workItem from="1732715836800" duration="872000" />
+      <workItem from="1732715836800" duration="1293000" />
     </task>
     <task id="LOCAL-00001" summary="de todo">
       <option name="closed" value="true" />

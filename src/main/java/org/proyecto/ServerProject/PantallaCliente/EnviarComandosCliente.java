@@ -28,6 +28,9 @@ public class EnviarComandosCliente implements KeyListener,MouseMotionListener,Mo
 
     @Override
     public void keyPressed(KeyEvent e) {
+        writer.println(-9); // Indicador para tecla tipeada
+        writer.println((int) e.getKeyChar()); // Código del carácter asociado
+        writer.flush(); // Enviar datos
 
     }
 
