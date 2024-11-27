@@ -54,7 +54,7 @@ public class ServerController  {
                         JLabel label = new JLabel();
                         frame.add(label);
                         frame.setSize(800, 600);
-                        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
                         frame.setVisible(true);
                         pantallaCliente.startScreenSharing(label);
                         clientScreenInUse.put(selectedClient, true);

@@ -19,7 +19,8 @@ public class Cliente {
         this.port = port;
     }
 
-    public void conectar() throws  IOException {
+    public void conectar(String ip) throws  IOException {
+
         socket = new Socket(config.getIp(), config.getPort());
         iniciarComunicacion();
     }
