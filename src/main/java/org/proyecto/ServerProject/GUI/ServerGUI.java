@@ -1,10 +1,15 @@
 package org.proyecto.ServerProject.GUI;
-import org.proyecto.ServerProject.Controllers.ServerController;
-
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
 import java.util.Map;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 
 public class ServerGUI extends JFrame {
@@ -13,6 +18,8 @@ public class ServerGUI extends JFrame {
     private JButton transferFile;
     private JPanel clientPanel;
     private Map<String,JPanel> clientViews;
+    private JList<String> clientList;
+    private JButton viewClientScreen;
 
     public ServerGUI(){
         setTitle("SERVIDOR REMOTO");
@@ -37,6 +44,15 @@ public class ServerGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(clientPanel);
         add(topPanel,BorderLayout.NORTH);
         add(scrollPane,BorderLayout.CENTER);
+
+        clientList = new JList<>();
+        viewClientScreen = new JButton("Ver Pantalla del Cliente");
+
+        JPanel clientListPanel = new JPanel(new BorderLayout());
+        clientListPanel.add(new JScrollPane(clientList), BorderLayout.CENTER);
+        clientListPanel.add(viewClientScreen, BorderLayout.SOUTH);
+
+        add(clientListPanel, BorderLayout.EAST);
     }
 
     public JPanel getClientPanel() {
@@ -53,5 +69,17 @@ public class ServerGUI extends JFrame {
 
     public JButton getTransferFile() {
         return transferFile;
+    }
+
+    public JList<String> getClientList() {
+        return clientList;
+    }
+
+    public JButton getViewClientScreen() {
+        return viewClientScreen;
+    }
+
+    public void updateClientList(String[] clients) {
+        clientList.setListData(clients);
     }
 }

@@ -1,6 +1,5 @@
 package org.proyecto.ServerProject.Server;
 
-import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
@@ -8,7 +7,6 @@ import java.util.concurrent.Executors;
 
 import org.proyecto.Config.LeerConfig;
 import org.proyecto.FactoryPool.PoolSockets.ConcreteSocketPool;
-import org.proyecto.ServerProject.PantallaCliente.PantallaCliente;
 
 public class Server {
     private final LeerConfig leerConfig = new LeerConfig("./src/main/resources/config/config.propierties");
@@ -16,6 +14,7 @@ public class Server {
     private final ServerSocket serverSocket;
     private final ConcreteSocketPool concreteSocketPool;
     private Thread serverThread;
+    private ClientConnectedListener clientConnectedListener;
 
 
 
@@ -28,6 +27,9 @@ public class Server {
             return new Server(port,concreteSocketPool);
         }
         return server;
+    }
+    public void setClientConnectedListener(ClientConnectedListener listener) {
+        this.clientConnectedListener = listener;
     }
     public void iniciarServer(){
          serverThread = new Thread(()-> {
@@ -62,14 +64,19 @@ public class Server {
             Socket cliente = serverSocket.accept(); // Acepta una nueva conexión
             String clientID = cliente.getInetAddress().getHostAddress();
 
-                 //Inicia el manejador para el cliente
-//                new Thread(new ComunicacionCliente(cliente, concreteSocketPool)).start();
-            PantallaCliente pantallaCliente = new PantallaCliente(cliente);
-            executor.execute(pantallaCliente);
-//            Thread pantallaCliente = new Thread(new PantallaCliente(cliente));
-//            pantallaCliente.start();
+            if (clientConnectedListener != null) {
+                clientConnectedListener.onClientConnected(clientID, cliente);
+            }
+
+            // Remove automatic window opening
+            // PantallaCliente pantallaCliente = new PantallaCliente(cliente);
+            // executor.execute(pantallaCliente);
         }
 
+    }
+
+    public interface ClientConnectedListener {
+        void onClientConnected(String clientID, Socket clientSocket);
     }
 
 }

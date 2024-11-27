@@ -1,36 +1,31 @@
 package org.proyecto.ServerProject.PantallaCliente;
 
-import org.proyecto.Command.ClicIzquierdoMouse;
-import org.proyecto.Command.MoverMouse;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.*;
+import java.awt.Image;
+import java.io.ObjectInputStream;
 import java.net.Socket;
 
-public class PantallaCliente  extends JFrame implements Runnable{
-    private  Socket socketCliente;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class PantallaCliente extends JFrame implements Runnable {
+    private Socket socketCliente;
 
     public PantallaCliente(Socket socket) {
-        socketCliente=socket;
+        socketCliente = socket;
+    }
+
+    public void startScreenSharing(JLabel label) {
+        Thread clientScreenThread = new Thread(() -> run(label));
+        clientScreenThread.start();
     }
 
     @Override
     public void run() {
-        Rectangle rectangle = null;
-        JFrame frame = new JFrame("Pantalla del Cliente");
-        JLabel label = new JLabel();
-        frame.add(label);
-        frame.setSize(800, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        EnviarComandosCliente enviarComandosCliente = new EnviarComandosCliente(socketCliente,label);
+        // This method is no longer used
+    }
 
-
-
-
+    public void run(JLabel label) {
         try (ObjectInputStream ois = new ObjectInputStream(socketCliente.getInputStream())) {
             while (true) {
                 String header = ois.readUTF();
@@ -39,13 +34,13 @@ public class PantallaCliente  extends JFrame implements Runnable{
                     // Recibir la imagen encapsulada en ImageIcon
                     ImageIcon imageIcon = (ImageIcon) ois.readObject();
                     Image image = imageIcon.getImage();
-                    image= image.getScaledInstance(label.getWidth(),label.getHeight(),Image.SCALE_SMOOTH);
+                    image = image.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
 
                     // Mostrar la imagen en el JLabel
                     label.setIcon(imageIcon);
 
                     // Actualizar la ventana
-                    frame.repaint();
+                    label.repaint();
                 }
             }
         } catch (Exception e) {
